@@ -1,4 +1,6 @@
+"use client";
 import { ExternalLink, Github } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface ProjectCardProps {
   id: string;
@@ -14,11 +16,31 @@ export default function ProjectCard({
   live,
   sourceCode,
 }: ProjectCardProps) {
+  const { isDark } = useTheme();
+
   return (
-    <div className="group relative border-b border-gray-800 pb-4 hover:border-gray-600 transition-all duration-300">
+    <div
+      className={`
+        group relative pb-4 transition-all duration-300 border-b
+        ${
+          isDark
+            ? "border-gray-800 hover:border-gray-600"
+            : "border-gray-300 hover:border-gray-400"
+        }
+      `}
+    >
       {/* Project Name and Icons */}
       <div className="flex items-center justify-between mb-2">
-        <h3 className="text-white text-base font-medium group-hover:text-green-400 transition-colors">
+        <h3
+          className={`
+            text-base font-medium transition-colors
+            ${
+              isDark
+                ? "text-white group-hover:text-green-400"
+                : "text-gray-900 group-hover:text-green-500"
+            }
+          `}
+        >
           {name}
         </h3>
         <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -26,7 +48,14 @@ export default function ProjectCard({
             href={live}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1 rounded text-gray-500 hover:text-blue-400 transition-colors"
+            className={`
+              p-1 rounded transition-colors
+              ${
+                isDark
+                  ? "text-gray-500 hover:text-blue-400"
+                  : "text-gray-500 hover:text-blue-600"
+              }
+            `}
             title="Live Demo"
           >
             <ExternalLink size={14} />
@@ -35,7 +64,14 @@ export default function ProjectCard({
             href={sourceCode}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1 rounded text-gray-500 hover:text-blue-400 transition-colors"
+            className={`
+              p-1 rounded transition-colors
+              ${
+                isDark
+                  ? "text-gray-500 hover:text-blue-400"
+                  : "text-gray-500 hover:text-blue-600"
+              }
+            `}
             title="Source Code"
           >
             <Github size={14} />
@@ -44,7 +80,12 @@ export default function ProjectCard({
       </div>
 
       {/* Description */}
-      <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
+      <p
+        className={`
+          text-sm leading-relaxed line-clamp-2
+          ${isDark ? "text-gray-400" : "text-gray-600"}
+        `}
+      >
         {description}
       </p>
     </div>
