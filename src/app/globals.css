@@ -14,7 +14,6 @@
   font-family: var(--font-caprasimo), Arial, Helvetica, sans-serif;
 }
 
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

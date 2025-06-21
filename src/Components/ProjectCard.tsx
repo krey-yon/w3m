@@ -36,8 +36,8 @@ export default function ProjectCard({
             text-base font-medium transition-colors
             ${
               isDark
-                ? "text-white group-hover:text-green-400"
-                : "text-gray-900 group-hover:text-green-500"
+                ? "text-white "
+                : "text-gray-900 "
             }
           `}
         >

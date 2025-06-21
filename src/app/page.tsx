@@ -21,7 +21,7 @@ export default function Home() {
           fixed inset-0 -z-10 h-full w-full
           ${
             isDark
-              ? "[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
+              ? "[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#6633ee_100%)]"
               : "bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"
           }
         `}
@@ -72,7 +72,13 @@ export default function Home() {
 
         {/* About Section */}
         <section className="mb-12">
-          <h2 className="text-green-400 text-xl mb-4 font-dotz"> about</h2>
+          <h2
+            className={`text-xl mb-4 font-dotz ${
+              isDark ? "text-white" : "text-black"
+            }`}
+          >
+            About
+          </h2>
           <div
             className={`mb-4 font-mono text-sm ${
               isDark ? "text-gray-300" : "text-gray-700"
@@ -88,7 +94,7 @@ export default function Home() {
             <p>{personalData.aboutMe}</p>
             <p>
               I&apos;m a {personalData.CurrentYear} {personalData.Degree}{" "}
-              student at {personalData.College}, working as a{" "}
+              student at {personalData.College}, working with {" "}
               {personalData.role.join(", ")}.
             </p>
           </div>
@@ -96,7 +102,13 @@ export default function Home() {
 
         {/* Skills Section */}
         <section className="mb-12">
-          <h2 className="text-green-400 text-xl mb-4 font-dotz"> skills</h2>
+          <h2
+            className={`text-xl mb-4 font-dotz ${
+              isDark ? "text-white" : "text-black"
+            }`}
+          >
+            Skills
+          </h2>
           <div className="flex flex-wrap gap-2">
             {skillsData.map((skill, index) => (
               <span
@@ -115,7 +127,13 @@ export default function Home() {
 
         {/* Projects Section */}
         <section className="mb-12">
-          <h2 className="text-green-400 text-xl mb-6 font-dotz">projects</h2>
+          <h2
+            className={`text-xl mb-6 font-dotz ${
+              isDark ? "text-white" : "text-black"
+            }`}
+          >
+            Projects
+          </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
             {projects.map((project) => (
               <ProjectCard
