@@ -19,7 +19,7 @@ const DotzBold = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Karan | Portfolio",
+  title: "Vikas | Portfolio",
   description:
     "Full-stack developer passionate about creating and delivering projects that make a real-world impact.",
 };
