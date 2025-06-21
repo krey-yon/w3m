@@ -21,7 +21,8 @@ export default function ProjectCard({
   return (
     <div
       className={`
-        group relative pb-4 transition-all duration-300 border-b
+        group relative pb-4 transition-all duration-300 border-b cursor-pointer
+        hover:scale-[1.01] hover:-translate-y-1
         ${
           isDark
             ? "border-gray-800 hover:border-gray-600"
@@ -36,8 +37,8 @@ export default function ProjectCard({
             text-base font-medium transition-colors
             ${
               isDark
-                ? "text-white "
-                : "text-gray-900 "
+                ? "text-white group-hover:text-blue-300"
+                : "text-gray-900 group-hover:text-blue-600"
             }
           `}
         >
@@ -49,7 +50,7 @@ export default function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className={`
-              p-1 rounded transition-colors
+              p-1 rounded transition-colors hover:scale-110
               ${
                 isDark
                   ? "text-gray-500 hover:text-blue-400"
@@ -65,7 +66,7 @@ export default function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className={`
-              p-1 rounded transition-colors
+              p-1 rounded transition-colors hover:scale-110
               ${
                 isDark
                   ? "text-gray-500 hover:text-blue-400"
@@ -82,8 +83,12 @@ export default function ProjectCard({
       {/* Description */}
       <p
         className={`
-          text-sm leading-relaxed line-clamp-2
-          ${isDark ? "text-gray-400" : "text-gray-600"}
+          text-sm leading-relaxed line-clamp-2 transition-colors
+          ${
+            isDark
+              ? "text-gray-400 group-hover:text-gray-300"
+              : "text-gray-600 group-hover:text-gray-700"
+          }
         `}
       >
         {description}

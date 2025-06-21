@@ -94,7 +94,7 @@ export default function Home() {
             <p>{personalData.aboutMe}</p>
             <p>
               I&apos;m a {personalData.CurrentYear} {personalData.Degree}{" "}
-              student at {personalData.College}, working with {" "}
+              student at {personalData.College}, and a {" "}
               {personalData.role.join(", ")}.
             </p>
           </div>
