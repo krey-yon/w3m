@@ -136,8 +136,8 @@ export default function Home() {
         <div
           className={`flex items-center gap-2 backdrop-blur-lg border rounded-2xl px-4 py-2 shadow-2xl ${
             isDark
-              ? "bg-gray-900/95 border-gray-700/50"
-              : "bg-white/95 border-gray-300/50"
+              ? "bg-gray-900/25 border-gray-700/50"
+              : "bg-white/25 border-gray-300/50"
           }`}
         >
           <a

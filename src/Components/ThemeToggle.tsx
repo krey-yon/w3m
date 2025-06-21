@@ -13,7 +13,7 @@ const ThemeToggle = () => {
         transition-all duration-300 ease-in-out
         ${
           isDark
-            ? "bg-gray-800 hover:bg-gray-700 text-yellow-400"
+            ? "bg-gray-800 hover:bg-gray-700 text-gray-400"
             : "bg-gray-200 hover:bg-gray-300 text-gray-800"
         }
         hover:scale-110 active:scale-95
