@@ -15,40 +15,55 @@ export default function Home() {
 
   return (
     <>
-      {/* Fixed Background */}
+      {/* Clean Background */}
       <div
         className={`
           fixed inset-0 -z-10 h-full w-full
           ${
             isDark
-              ? "[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
-              : "bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"
+              ? "bg-gray-950"
+              : "bg-gray-50"
           }
         `}
-      />
+      >
+        {/* Subtle gradient overlay */}
+        <div
+          className={`absolute inset-0 ${
+            isDark
+              ? "[background:radial-gradient(ellipse_at_top,rgba(120,119,198,0.1),transparent_50%)]"
+              : "[background:radial-gradient(ellipse_at_top,rgba(99,102,241,0.05),transparent_50%)]"
+          }`}
+        />
+      </div>
 
-      {/* Scrollable Content */}
+      {/* Main Content */}
       <div
-        className={`relative min-h-screen font-caprasimo p-4 md:p-8 max-w-4xl mx-auto pb-24 ${
-          isDark ? "text-white" : "text-gray-900"
+        className={`relative min-h-screen p-6 md:p-8 max-w-4xl mx-auto pb-32 ${
+          isDark ? "text-gray-100" : "text-gray-900"
         }`}
       >
-        {/* Header */}
-        <header className="mb-12 font-caprasimo pt-16">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4">
-              <Image
-                src={personalData.ProfilePicture}
-                alt={personalData.Name}
-                width={64}
-                height={64}
-                className={`w-16 h-16 rounded-full border-2 ${
-                  isDark ? "border-gray-700" : "border-gray-300"
-                }`}
-              />
+        {/* Clean Header */}
+        <header className="mb-20 pt-16">
+          <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center gap-6">
+              <div className="relative">
+                <Image
+                  src={personalData.ProfilePicture}
+                  alt={personalData.Name}
+                  width={72}
+                  height={72}
+                  className={`w-18 h-18 rounded-full transition-all duration-300 hover:scale-105 ${
+                    isDark 
+                      ? "border border-gray-800 shadow-lg" 
+                      : "border border-gray-200 shadow-md"
+                  }`}
+                />
+              </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <h1 className="text-2xl font-bold">
+                <div className="flex items-center gap-3 mb-2">
+                  <h1 className={`text-2xl font-bold ${
+                    isDark ? "text-white" : "text-gray-900"
+                  }`}>
                     {personalData.Name.toLowerCase()}
                   </h1>
                   <Image
@@ -59,167 +74,233 @@ export default function Home() {
                     className="w-5 h-5"
                   />
                 </div>
-                <p className={isDark ? "text-gray-400" : "text-gray-600"}>
+                <p className={`text-base ${
+                  isDark ? "text-gray-400" : "text-gray-600"
+                }`}>
                   @{personalData.Alias.toLowerCase()}
                 </p>
               </div>
             </div>
-
-            {/* Theme Toggle */}
             <ThemeToggle />
           </div>
         </header>
 
         {/* About Section */}
-        <section className="mb-12">
-          <h2 className="text-green-400 text-xl mb-4 font-dotz"> about</h2>
-          <div
-            className={`mb-4 font-mono text-sm ${
-              isDark ? "text-gray-300" : "text-gray-700"
-            }`}
-          >
+        <section className="mb-20">
+          <h2 className={`text-sm font-medium uppercase tracking-wider mb-8 ${
+            isDark ? "text-gray-500" : "text-gray-500"
+          }`}>
+            About
+          </h2>
+          
+          <div className={`mb-8 font-mono text-sm px-4 py-2 rounded-lg inline-block ${
+            isDark 
+              ? "bg-gray-900/50 text-gray-400 border border-gray-800/50" 
+              : "bg-white text-gray-600 border border-gray-200"
+          }`}>
             [ break → understand → build ]
           </div>
-          <div
-            className={`space-y-4 leading-relaxed ${
+          
+          <div className="space-y-6">
+            <div className={`text-lg leading-relaxed ${
               isDark ? "text-gray-300" : "text-gray-700"
-            }`}
-          >
-            <p>{personalData.aboutMe}</p>
-            <p>
-              I&apos;m a {personalData.CurrentYear} {personalData.Degree}{" "}
-              student at {personalData.College}, working as a{" "}
-              {personalData.role.join(", ")}.
-            </p>
+            }`}>
+              <p>{personalData.aboutMe}</p>
+            </div>
+            
+            <div className={`text-lg leading-relaxed ${
+              isDark ? "text-gray-300" : "text-gray-700"
+            }`}>
+              <p>
+                I&apos;m a <span className={`font-medium ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}>
+                  {personalData.CurrentYear} {personalData.Degree}
+                </span>{" "}
+                student at <span className={`font-medium ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}>
+                  {personalData.College}
+                </span>, working as a{" "}
+                <span className={`font-medium ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}>
+                  {personalData.role.join(", ")}
+                </span>.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* Skills Section */}
-        <section className="mb-12">
-          <h2 className="text-green-400 text-xl mb-4 font-dotz"> skills</h2>
-          <div className="flex flex-wrap gap-2">
-            {skillsData.map((skill, index) => (
-              <span
-                key={index}
-                className={`px-3 py-1 rounded text-sm border ${
-                  isDark
-                    ? "bg-gray-800 text-gray-300 border-gray-700"
-                    : "bg-gray-100 text-gray-700 border-gray-300"
-                }`}
-              >
-                {skill}
-              </span>
-            ))}
+        <section className="mb-20">
+          <h2 className={`text-sm font-medium uppercase tracking-wider mb-8 ${
+            isDark ? "text-gray-500" : "text-gray-500"
+          }`}>
+            Skills
+          </h2>
+          
+          <div className="space-y-6 overflow-hidden">
+            {/* First Row - Moving Right */}
+            <div className="flex animate-marquee-right">
+              <div className="flex gap-4 whitespace-nowrap">
+                {skillsData.slice(0, Math.ceil(skillsData.length / 2)).map((skill, index) => (
+                  <div
+                    key={`right-${index}`}
+                    className={`px-6 py-3 rounded-full text-sm font-medium border transition-all duration-300 hover:scale-105 flex-shrink-0 ${
+                      isDark
+                        ? "bg-gray-900/50 text-gray-300 border-gray-800/50 hover:bg-gray-800/50 hover:border-gray-700/50 hover:text-white"
+                        : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900"
+                    }`}
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
+              {/* Duplicate for seamless loop */}
+              <div className="flex gap-4 whitespace-nowrap ml-4">
+                {skillsData.slice(0, Math.ceil(skillsData.length / 2)).map((skill, index) => (
+                  <div
+                    key={`right-dup-${index}`}
+                    className={`px-6 py-3 rounded-full text-sm font-medium border transition-all duration-300 hover:scale-105 flex-shrink-0 ${
+                      isDark
+                        ? "bg-gray-900/50 text-gray-300 border-gray-800/50 hover:bg-gray-800/50 hover:border-gray-700/50 hover:text-white"
+                        : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900"
+                    }`}
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Second Row - Moving Left */}
+            <div className="flex animate-marquee-left">
+              <div className="flex gap-4 whitespace-nowrap">
+                {skillsData.slice(Math.ceil(skillsData.length / 2)).map((skill, index) => (
+                  <div
+                    key={`left-${index}`}
+                    className={`px-6 py-3 rounded-full text-sm font-medium border transition-all duration-300 hover:scale-105 flex-shrink-0 ${
+                      isDark
+                        ? "bg-gray-900/50 text-gray-300 border-gray-800/50 hover:bg-gray-800/50 hover:border-gray-700/50 hover:text-white"
+                        : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900"
+                    }`}
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
+              {/* Duplicate for seamless loop */}
+              <div className="flex gap-4 whitespace-nowrap ml-4">
+                {skillsData.slice(Math.ceil(skillsData.length / 2)).map((skill, index) => (
+                  <div
+                    key={`left-dup-${index}`}
+                    className={`px-6 py-3 rounded-full text-sm font-medium border transition-all duration-300 hover:scale-105 flex-shrink-0 ${
+                      isDark
+                        ? "bg-gray-900/50 text-gray-300 border-gray-800/50 hover:bg-gray-800/50 hover:border-gray-700/50 hover:text-white"
+                        : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900"
+                    }`}
+                  >
+                    {skill}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Projects Section */}
-        <section className="mb-12">
-          <h2 className="text-green-400 text-xl mb-6 font-dotz">projects</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
-            {projects.map((project) => (
-              <ProjectCard
+        <section className="mb-20">
+          <h2 className={`text-sm font-medium uppercase tracking-wider mb-8 ${
+            isDark ? "text-gray-500" : "text-gray-500"
+          }`}>
+            Projects
+          </h2>
+          
+          <div className="space-y-0">
+            {projects.map((project, index) => (
+              <div
                 key={project.id}
-                id={project.id}
-                name={project.name}
-                description={project.description}
-                live={project.live}
-                sourceCode={project.sourceCode}
-              />
+                className="opacity-0 animate-fade-in-up"
+                style={{ 
+                  animationDelay: `${index * 150}ms`,
+                  animationFillMode: 'forwards'
+                }}
+              >
+                <ProjectCard
+                  id={project.id}
+                  name={project.name}
+                  description={project.description}
+                  live={project.live}
+                  sourceCode={project.sourceCode}
+                />
+              </div>
             ))}
           </div>
         </section>
       </div>
 
-      {/* Sticky Contact Dock - Always at bottom */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+      {/* Enhanced Contact Dock */}
+      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
         <div
-          className={`flex items-center gap-2 backdrop-blur-lg border rounded-2xl px-4 py-2 shadow-2xl ${
+          className={`flex items-center gap-2 px-6 py-3 rounded-full border transition-all duration-300 hover:scale-105 ${
             isDark
-              ? "bg-gray-900/25 border-gray-700/50"
-              : "bg-white/25 border-gray-300/50"
+              ? "bg-gray-900/90 backdrop-blur-xl border-gray-800 shadow-2xl"
+              : "bg-white/90 backdrop-blur-xl border-gray-200 shadow-lg"
           }`}
         >
           <a
             href={`mailto:${contactData.email}`}
-            className={`group relative p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1 ${
+            className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${
               isDark
-                ? "bg-gray-800/50 hover:bg-gray-700/50"
-                : "bg-gray-100/50 hover:bg-gray-200/50"
+                ? "hover:bg-gray-800 text-gray-400 hover:text-gray-200"
+                : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"
             }`}
             title="Email"
           >
-            <Mail
-              size={18}
-              className={`transition-colors ${
-                isDark
-                  ? "text-gray-400 group-hover:text-blue-400"
-                  : "text-gray-600 group-hover:text-blue-600"
-              }`}
-            />
+            <Mail size={18} />
           </a>
 
           <a
             href={contactData.github}
             target="_blank"
             rel="noopener noreferrer"
-            className={`group relative p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1 ${
+            className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${
               isDark
-                ? "bg-gray-800/50 hover:bg-gray-700/50"
-                : "bg-gray-100/50 hover:bg-gray-200/50"
+                ? "hover:bg-gray-800 text-gray-400 hover:text-gray-200"
+                : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"
             }`}
             title="GitHub"
           >
-            <Github
-              size={18}
-              className={`transition-colors ${
-                isDark
-                  ? "text-gray-400 group-hover:text-blue-400"
-                  : "text-gray-600 group-hover:text-blue-600"
-              }`}
-            />
+            <Github size={18} />
           </a>
 
           <a
             href={contactData.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className={`group relative p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1 ${
+            className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${
               isDark
-                ? "bg-gray-800/50 hover:bg-gray-700/50"
-                : "bg-gray-100/50 hover:bg-gray-200/50"
+                ? "hover:bg-gray-800 text-gray-400 hover:text-gray-200"
+                : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"
             }`}
             title="Twitter"
           >
-            <Twitter
-              size={18}
-              className={`transition-colors ${
-                isDark
-                  ? "text-gray-400 group-hover:text-blue-400"
-                  : "text-gray-600 group-hover:text-blue-600"
-              }`}
-            />
+            <Twitter size={18} />
           </a>
 
           <a
             href={contactData.discord}
             target="_blank"
             rel="noopener noreferrer"
-            className={`group relative p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1 ${
+            className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${
               isDark
-                ? "bg-gray-800/50 hover:bg-gray-700/50"
-                : "bg-gray-100/50 hover:bg-gray-200/50"
+                ? "hover:bg-gray-800 text-gray-400 hover:text-gray-200"
+                : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"
             }`}
             title="Discord"
           >
-            <FaDiscord
-              size={18}
-              className={`transition-colors ${
-                isDark
-                  ? "text-gray-400 group-hover:text-blue-400"
-                  : "text-gray-600 group-hover:text-blue-600"
-              }`}
-            />
+            <FaDiscord size={18} />
           </a>
         </div>
       </div>

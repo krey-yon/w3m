@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
 }
 
 /* Custom heading font */
@@ -13,7 +13,6 @@
 .font-caprasimo {
   font-family: var(--font-caprasimo), Arial, Helvetica, sans-serif;
 }
-
 
 @theme inline {
   --color-background: var(--background);
@@ -26,7 +25,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #f5f5f5;
   }
 }
 
@@ -34,70 +33,147 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-caprasimo), Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  font-variant: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Grid pattern background */
+/* Subtle grid pattern for depth */
 .bg-grid-pattern {
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-/* Custom animations */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg); 
+/* Marquee Animations */
+@keyframes marquee-right {
+  0% {
+    transform: translateX(0);
   }
-  50% { 
-    transform: translateY(-10px) rotate(180deg); 
-  }
-}
-
-@keyframes drift {
-  0% { 
-    transform: translateX(0px) translateY(0px); 
-  }
-  25% { 
-    transform: translateX(10px) translateY(-5px); 
-  }
-  50% { 
-    transform: translateX(-5px) translateY(-10px); 
-  }
-  75% { 
-    transform: translateX(-10px) translateY(-5px); 
-  }
-  100% { 
-    transform: translateX(0px) translateY(0px); 
+  100% {
+    transform: translateX(-100%);
   }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+@keyframes marquee-left {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
-.animate-drift {
-  animation: drift 8s ease-in-out infinite;
+.animate-marquee-right {
+  animation: marquee-right 25s linear infinite;
 }
 
-/* Terminal cursor blink */
-@keyframes cursor-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+.animate-marquee-left {
+  animation: marquee-left 25s linear infinite;
 }
 
-.animate-cursor {
-  animation: cursor-blink 1s infinite;
+/* Pause animation on hover for better UX */
+.animate-marquee-right:hover,
+.animate-marquee-left:hover {
+  animation-play-state: paused;
 }
 
-/* Noise texture overlay */
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+/* Fade in up animation for project cards */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* About section animations */
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-words {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease-out;
+}
+
+.animate-float-up {
+  opacity: 0;
+  animation: float-up 0.6s ease-out;
+}
+
+.animate-fade-in-words {
+  animation: fade-in-words 1s ease-out 0.3s both;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+}
+
+::-moz-selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+}
+
