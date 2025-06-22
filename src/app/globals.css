@@ -46,40 +46,37 @@ body.light {
 
 /* Grid pattern background */
 .bg-grid-pattern {
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 /* Custom animations */
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
   }
-  50% {
-    transform: translateY(-10px) rotate(180deg);
+  50% { 
+    transform: translateY(-10px) rotate(180deg); 
   }
 }
 
 @keyframes drift {
-  0% {
-    transform: translateX(0px) translateY(0px);
+  0% { 
+    transform: translateX(0px) translateY(0px); 
   }
-  25% {
-    transform: translateX(10px) translateY(-5px);
+  25% { 
+    transform: translateX(10px) translateY(-5px); 
   }
-  50% {
-    transform: translateX(-5px) translateY(-10px);
+  50% { 
+    transform: translateX(-5px) translateY(-10px); 
   }
-  75% {
-    transform: translateX(-10px) translateY(-5px);
+  75% { 
+    transform: translateX(-10px) translateY(-5px); 
   }
-  100% {
-    transform: translateX(0px) translateY(0px);
+  100% { 
+    transform: translateX(0px) translateY(0px); 
   }
 }
 
@@ -93,14 +90,8 @@ body.light {
 
 /* Terminal cursor blink */
 @keyframes cursor-blink {
-  0%,
-  50% {
-    opacity: 1;
-  }
-  51%,
-  100% {
-    opacity: 0;
-  }
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 .animate-cursor {
@@ -119,28 +110,14 @@ body.light {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Enhanced Mobile viewport fix */
+/* Mobile viewport fix */
 .mobile-viewport-fix {
   height: 100vh;
-  height: 100dvh; /* Dynamic viewport height */
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100dvh; /* Dynamic viewport height for modern browsers */
 }
 
-/* Fallback for older browsers */
 @supports not (height: 100dvh) {
   .mobile-viewport-fix {
-    height: calc(100vh + 20px); /* Add extra height buffer */
-    min-height: calc(100vh + 20px);
+    height: calc(100vh + env(safe-area-inset-bottom));
   }
-}
-
-/* Ensure body covers full viewport */
-html,
-body {
-  height: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  background: transparent;
-  overflow-x: hidden;
 }
