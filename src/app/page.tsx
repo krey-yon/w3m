@@ -18,7 +18,7 @@ export default function Home() {
       {/* Fixed Background */}
       <div
         className={`
-          fixed inset-0 -z-10 h-full w-full
+          fixed inset-0 -z-10 w-full mobile-viewport-fix
           ${
             isDark
               ? "[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#6633ee_100%)]"
@@ -94,7 +94,7 @@ export default function Home() {
             <p>{personalData.aboutMe}</p>
             <p>
               I&apos;m a {personalData.CurrentYear} {personalData.Degree}{" "}
-              student at {personalData.College}, and a {" "}
+              student at {personalData.College}, and a{" "}
               {personalData.role.join(", ")}.
             </p>
           </div>
