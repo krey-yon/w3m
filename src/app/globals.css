@@ -33,41 +33,53 @@ body {
   background: transparent;
   color: var(--foreground);
   font-family: var(--font-caprasimo), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+body.dark {
+  background: radial-gradient(125% 125% at 50% 10%, #000 40%, #6633ee 100%);
+}
+
+body.light {
+  background: radial-gradient(125% 125% at 50% 10%, #fff 40%, #63e 100%);
 }
 
 /* Grid pattern background */
 .bg-grid-pattern {
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 /* Custom animations */
 @keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg); 
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
   }
-  50% { 
-    transform: translateY(-10px) rotate(180deg); 
+  50% {
+    transform: translateY(-10px) rotate(180deg);
   }
 }
 
 @keyframes drift {
-  0% { 
-    transform: translateX(0px) translateY(0px); 
+  0% {
+    transform: translateX(0px) translateY(0px);
   }
-  25% { 
-    transform: translateX(10px) translateY(-5px); 
+  25% {
+    transform: translateX(10px) translateY(-5px);
   }
-  50% { 
-    transform: translateX(-5px) translateY(-10px); 
+  50% {
+    transform: translateX(-5px) translateY(-10px);
   }
-  75% { 
-    transform: translateX(-10px) translateY(-5px); 
+  75% {
+    transform: translateX(-10px) translateY(-5px);
   }
-  100% { 
-    transform: translateX(0px) translateY(0px); 
+  100% {
+    transform: translateX(0px) translateY(0px);
   }
 }
 
@@ -81,8 +93,14 @@ body {
 
 /* Terminal cursor blink */
 @keyframes cursor-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .animate-cursor {
