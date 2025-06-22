@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --background: transparent;
   --foreground: #ffffff;
-}
+} */
 
 /* Custom heading font */
 .font-dotz {

@@ -18,19 +18,13 @@ export default function Home() {
       {/* Fixed Background */}
       <div
         className={`
-          fixed inset-0 -z-10 w-full
+          fixed inset-0 -z-10 w-full mobile-viewport-fix
           ${
             isDark
               ? "[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#6633ee_100%)]"
               : "bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"
           }
         `}
-        style={{
-          height: "100vh",
-          minHeight: "100vh",
-          height: "100dvh",
-          minHeight: "100dvh",
-        }}
       />
 
       {/* Scrollable Content */}
