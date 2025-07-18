@@ -71,10 +71,10 @@ export const projects: Project[] = [
   },
   {
     id: "9",
-    name: "NoBg",
+    name: "Eatopia Mobile Apk (React Native)",
     description:
-      "A SaaS tool for removing image backgrounds, built with Python and FastAPI.",
-    live: "https://nobg.kreyon.in/",
-    sourceCode: "https://github.com/krey-yon/NoBG",
+      "Android application for eatopia a food delivery application.",
+    live: "https://github.com/krey-yon/Eatopia_Mobile_App/releases/tag/Apk",
+    sourceCode: "https://github.com/krey-yon/Eatopia_Mobile_App",
   },
 ];
