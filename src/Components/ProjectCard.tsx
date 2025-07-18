@@ -1,6 +1,7 @@
 "use client";
 import { ExternalLink, Github } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
+import Link from "next/link";
 
 interface ProjectCardProps {
   id: string;
@@ -42,7 +43,7 @@ export default function ProjectCard({
             }
           `}
         >
-          {name}
+          <Link href={live}>{name}</Link>
         </h3>
         <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <a
