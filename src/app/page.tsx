@@ -84,7 +84,7 @@ export default function Home() {
               isDark ? "text-gray-300" : "text-gray-700"
             }`}
           >
-            [ break → understand → build ]
+            [ Identify Problem → Find Solution → Implement Solution ]
           </div>
           <div
             className={`space-y-4 leading-relaxed ${
@@ -92,11 +92,11 @@ export default function Home() {
             }`}
           >
             <p>{personalData.aboutMe}</p>
-            <p>
+            {/*<p>
               I&apos;m a {personalData.CurrentYear} {personalData.Degree}{" "}
               student at {personalData.College}, and a{" "}
               {personalData.role.join(", ")}.
-            </p>
+            </p>*/}
           </div>
         </section>
 
